@@ -1,0 +1,35 @@
+h2 {
+	padding: 20px 20px 20px 0;
+}
+a {
+	cursor: pointer;
+}
+.inputStyle {
+	padding: 20px;
+	text-align: right;
+}
+#football {
+	background-color: #0000ff;
+	color: #ffffff;
+}
+#basketball {
+	background-color: #ff004f;
+}
+#golf {
+	background-color: #008000;
+}
+#form1 {
+	background-color: #ffce00;
+}
+#tennis {
+	background-color: #a52a2a;
+}
+#athletics {
+	background-color: #f14e07;
+}
+#rugby {
+	background-color: #a7bcff;
+}
+#other {
+	background-color: #808080;
+}

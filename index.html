@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="sportList">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body>
+	<div class="container">
+  <h2>The World's Highest-Paid Athletes</h2>
+		<div ng-controller="sportController">
+			<div class="inputStyle">
+        <input type="text" ng-model="search" placeholder=""/> <i class="fa fa-search" aria-hidden="true"></i> Search
+      </div>
+			<table class="table">
+    			<thead>
+      				<tr>
+        				<th><a ng-click="sortType = 'rank'; sortReverse = !sortReverse">Place</a></th>
+        				<th><a ng-click="sortType = 'name'; sortReverse = !sortReverse">Name</a></th>
+        				<th><a ng-click="sortType = 'value'; sortReverse = !sortReverse">Money</a></th>
+        			
+      				</tr>
+    			</thead>
+    			<tbody>
+      				<tr ng-repeat="sport in sports | orderBy:sortType:sortReverse | filter: search | filter: filterPlay" 
+      					ng-style="{ 
+      					color: 
+      					(sport.play == 'golf') ? '#008000' : 
+      					(sport.play == 'basketball') ? '#ff004f' : 
+      					(sport.play == 'athletics') ? '#f14e07' : 
+      					(sport.play == 'Form1') ? '#ffce00' : 
+      					(sport.play == 'rugby') ? '#a7bcff' : 
+      					(sport.play == 'football') ? '#0000ff' : 
+      					(sport.play == 'tenis') ? '#a52a2a' : 
+      					'#808080'}">
+	        			<td>
+	        				{{sport.rank}}
+	        			</td>
+	        			<td>
+	        				{{sport.name}}
+	        			</td>
+	        			<td>
+	        				{{sport.value}}
+	        			</td>
+      				</tr>
+      			</tbody>
+      		</table>
+        <div class="row">
+          <div class="col-6">
+            <ul class="list-group">
+              <a ng-click="filterPlay.play = (sports.play = 'football')"><li id="football" class="list-group-item">Football</li></a>
+              <a ng-click="filterPlay.play = (sports.play = 'basketball')"><li id="basketball" class="list-group-item">Basketball</li></a>
+              <a ng-click="filterPlay.play = (sports.play = 'golf')"><li id="golf" class="list-group-item">Golf</li></a>
+              <a ng-click="filterPlay.play = (sports.play = 'Form1')"><li id="form1" class="list-group-item">Auto Racing</li></a>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul class="list-group">
+              <a ng-click="filterPlay.play = (sports.play = 'tenis')"><li id="tennis" class="list-group-item">Tennis</li></a>
+              <a ng-click="filterPlay.play = (sports.play = 'athletics')"><li id="athletics" class="list-group-item">Athletics</li></a>
+              <a ng-click="filterPlay.play = (sports.play = 'rugby')"><li id="rugby" class="list-group-item">Rugby</li></a>
+              <a ng-click="filterPlay.play = (sports.play = '')"><li id="other" class="list-group-item">All</li></a>
+            </ul>
+  		    </div>
+        </div>
+	</div>
+
+
+</body>
+</html>
+
